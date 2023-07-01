@@ -6,7 +6,9 @@ const router = express.Router();
 
 // localhost:5000/posts
 router.get('/', getPosts);
-router.post('/', auth,createPost);
+// localhost:5000/posts
+router.post('/', auth, createPost);
+// localhost:5000/posts/id
 router.patch('/:id',auth, updatePost);
 router.delete('/:id',auth, deletePost)
 router.patch('/:id/likepost',auth, likePost)

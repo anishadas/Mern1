@@ -5,14 +5,16 @@ import { MyPaper, MyForm, MyButton, FileInput } from "./styles";
 import { useDispatch,useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
 function Form({ currentId, setCurrentId }) {
-  const [postData, setPostData] = useState({ title: '', message: '', hostingAt: '', selectedFile: '' });
+
+  const [postData, setPostData] = useState({ title: "", message: "", hostingAt: "", selectedFile :""})
+  // console.log(postData)
   const dispatch = useDispatch();
 
   const post = useSelector(state => currentId ? state.posts.find(post => post._id === currentId) : null)
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (currentId) {
+    if (currentId !==0) {
       dispatch(updatePost(currentId,postData))
     } else {
       dispatch(createPost(postData)); 
@@ -44,20 +46,11 @@ function Form({ currentId, setCurrentId }) {
         <Typography variant="h6">
           {currentId ? `Editing "${post.title}"` : "Creating a Project"}
         </Typography>
-        {/* <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={handleChange}
-        /> */}
         <TextField
           name="title"
           variant="outlined"
           label="Title"
           fullWidth
-          value={postData.title}
           onChange={handleChange}
         />
         <TextField
@@ -67,15 +60,13 @@ function Form({ currentId, setCurrentId }) {
           fullWidth
           multiline
           rows={4}
-          value={postData.message}
           onChange={handleChange}
         />
         <TextField
-          name="thostingAtags"
+          name="hostingAt"
           variant="outlined"
           label="Tags (coma separated)"
           fullWidth
-          value={postData.hostingAt}
           onChange={handleChange}
         />
         <FileInput>

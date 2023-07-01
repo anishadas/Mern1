@@ -30,7 +30,8 @@ server:
 1. npm install axios moment react-file-base64 redux react-redux redux-thunk
 2. npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
 3.  npm install jwt-decode
-4.  npm install google-oauth2
+4.  npm i @react-oauth/google
+5.  npm i react-router react-router-dom
 
 ## Redux-Thunk
    -  it is a middleware that looks at every action that passes through the system, and if it’s a function, it calls that function. That’s all it does.

@@ -43,7 +43,7 @@ export const deletePost=async(req,res)=>{
 
 export const likePost=async(req,res)=>{
     const {id}=req.params;
-    console.log("req",req)
+    // console.log("req",req)
     // check if user is authenticated - auth middleware
     if(!req.userId) {return res.json({message:'Unathenticated'});}
     if(!mongoose.Types.ObjectId.isValid(id)){

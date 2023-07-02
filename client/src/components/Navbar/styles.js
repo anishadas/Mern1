@@ -8,7 +8,7 @@ export const MyAppBar = styled(AppBar)({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '10px 50px',
+    padding: '2px 50px',
 })
 
 export const Heading = styled(Typography)({
@@ -27,18 +27,21 @@ export const LogoContainer = styled('div')({
 export const MyToolBar = styled(Toolbar)({
     display: 'flex',
     justifyContent: 'flex-end',
-    width: '400px',
+    width: '300px',
 })
 
 export const Profile = styled('div')({
     display: 'flex',
     justifyContent: 'space-between',
-    width: '400px',
+    width: '300px',
 })
 
 export const UserName = styled(Typography)({
     display: 'flex',
     alignItems: 'center',
+    fontFamily:'Bebas Neue',
+    color: '#5DB8FE',
+    fontSize:'28px'
 })
 
 

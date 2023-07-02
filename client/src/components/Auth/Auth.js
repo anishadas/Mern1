@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { MyAvatar, MyPaper, MyForm, SubmitButton } from './styles'
-import { Button,Grid,Typography,Container } from '@mui/material';
+import { Button, Grid, Typography, Container } from '@mui/material';
 import Input from './Input';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { signup, signin } from '../../actions/auth';
+import { useGoogleLogin } from '@react-oauth/google';
+import GoogleIcon from '@mui/icons-material/Google';
+import axios from 'axios';
+import { AUTH } from '../../constants/posts';
 const initialState = { fname: '', lname: '', email: '', password: '', confirmPassword: '' };
 
 function Auth() {
@@ -15,13 +19,13 @@ function Auth() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleChange = (e) => { 
+    const handleChange = (e) => {
         setFormData({
             ...formData,
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         })
     }
-    const handleSubmit = (e) => { 
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (isSignup) {
             dispatch(signup(formData, navigate));
@@ -29,13 +33,34 @@ function Auth() {
             dispatch(signin(formData, navigate));
         }
     }
-    const handleShowPassword = () => { 
+    const handleShowPassword = () => {
         setShowPassword(!showPassword);
     }
     const switchMode = () => {
         setIsSignUp(!isSignup);
-        handleShowPassword(false)
+        setFormData(initialState);
+        setShowPassword(false);
     }
+
+    const googleSignin = useGoogleLogin({
+        onSuccess: async res => {
+            try {
+                const { data } = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+                    headers: {
+                        "Authorization": `Bearer ${res.access_token}`
+                    }
+                })
+                // console.log("data", data)
+                const result = { email: data.email, name: data.name, imageUrl: data.picture, password: "" }
+                const token = data.sub;
+                dispatch({ type: AUTH, data: { result, token } });
+                navigate("/")
+            }
+            catch (error) {
+                console.log(error)
+            }
+        }
+    })
     return (
         <Container component="main" maxWidth="xs">
             <MyPaper elevation={3}>
@@ -56,7 +81,10 @@ function Auth() {
                         {isSignup ? 'Sign Up' : 'Sign In'}
                     </SubmitButton>
                     {/* google sign in */}
-
+                    <SubmitButton fullWidth variant='contained' color='primary' onClick={googleSignin}>
+                        <GoogleIcon />&nbsp;&nbsp;
+                        {isSignup ? 'Sign Up with Google' : 'Sign In with Google'}
+                    </SubmitButton>
                     <Grid container justify="flex-end">
                         <Grid item>
                             <Button onClick={switchMode}>

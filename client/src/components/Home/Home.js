@@ -14,16 +14,16 @@ const Home = () => {
     
     return (
         <Grow in> 
-            <Container>
-                <MyGrid container justify="space-between" alignItems="stretch" spacing={3}>
-                    <Grid item xs={12} sm={7}>
+            
+                <MyGrid container justify="space-around" alignItems="stretch" spacing={1}>
+                    <Grid item xs={12} sm={9}>
                         <Posts setCurrentId={setCurrentId} />
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={3}>
                         <Form setCurrentId={setCurrentId} currentId={currentId} />
                     </Grid>
                 </MyGrid>
-            </Container>
+    
         </Grow>
     )
 }

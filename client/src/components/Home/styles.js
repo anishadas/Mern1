@@ -4,5 +4,6 @@ import {  Grid, styled } from '@mui/material'
     
 // [theme.breakpoints.down('sm')]:(add it)
 export const MyGrid = styled(Grid)({
-    // flexDirection:'column-reverse'
+    // border: '2px solid red',
+    
 })

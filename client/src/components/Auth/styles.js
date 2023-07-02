@@ -19,7 +19,7 @@ export const MyForm = styled('form')({
 })
 
 export const SubmitButton = styled(Button)({
-    margin: theme.spacing(3, 0, 2),
+    marginTop: theme.spacing(2),
 })
 
 

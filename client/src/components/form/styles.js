@@ -3,7 +3,8 @@ import { Paper, Button,styled ,createTheme} from '@mui/material'
 const theme = createTheme();
 
 export const MyPaper = styled(Paper)({
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
+    // width:"100%"
 })
 
 export const MyForm = styled('form')({

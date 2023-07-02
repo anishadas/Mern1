@@ -1,4 +1,4 @@
-import { Card, CardMedia, Typography, CardActions, styled } from "@mui/material";
+import { Card, CardMedia, Typography, CardActions, styled, Button } from "@mui/material";
 
 export const MyCard = styled(Card)({
     display: 'flex',
@@ -7,6 +7,7 @@ export const MyCard = styled(Card)({
     borderRadius: '15px',
     height: '100%',
     position: 'relative',
+    width:'90%'
 })
 
 export const MyCardMedia = styled(CardMedia)({
@@ -46,4 +47,35 @@ export const Details = styled('div')({
     margin: '20px',
 })
 
+export const MyButton = styled('button')({
+    height: '40px',
+    width: "40px",
+    borderRadius: "50%",
+    backgroundColor: "white",
+    border: "none",
+    boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px',
+    cursor: 'pointer',
+    transition:'all 0.4s ease-in-out',
+    '&: hover': {
+        // boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+        backgroundColor: "#9C27B0",
+        color: 'white'
+    },
+})
 
+export const MyButtons = styled(Button)({
+    // boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px',
+    cursor: 'pointer',
+    transition: 'all 0.4s ease-in-out',
+    '&: hover': {
+        boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+        backgroundColor: "#9C27B0",
+        color: 'white',
+    },
+})
+
+export const MyButton2 = styled(Button)({
+    position: 'relative',
+    left: '187px',
+    bottom:'25px'
+})

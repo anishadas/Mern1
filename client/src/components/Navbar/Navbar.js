@@ -12,7 +12,6 @@ function Navbar() {
     // let user = null;
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
@@ -31,15 +30,14 @@ function Navbar() {
 
     const logout = () => {
         dispatch({ type: LOGOUT });
-
         navigate('/');
-
         setUser(null);
+        window.location.reload();
     };
     return (
         <MyAppBar position="static" color="inherit">
             <LogoContainer>
-                <Heading variant="h2" align="center" >Memories</Heading>
+                <Heading variant="h3" align="center" >Projects</Heading>
                 <Image src={projects} alt="icon" height="60" />
             </LogoContainer>
             <MyToolBar>

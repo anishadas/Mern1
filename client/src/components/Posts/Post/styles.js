@@ -1,4 +1,4 @@
-import { Card, CardMedia, Typography, CardActions, styled, Button } from "@mui/material";
+import { Card, CardMedia, Typography, CardActions, styled, Button, ButtonBase } from "@mui/material";
 
 export const MyCard = styled(Card)({
     display: 'flex',
@@ -7,7 +7,6 @@ export const MyCard = styled(Card)({
     borderRadius: '15px',
     height: '100%',
     position: 'relative',
-    width:'90%'
 })
 
 export const MyCardMedia = styled(CardMedia)({
@@ -19,12 +18,13 @@ export const MyCardMedia = styled(CardMedia)({
 
 export const MyTypography = styled(Typography)({
     padding: '0 16px',
+    marginBottom: 0
 })
 
 export const MyCardActions = styled(CardActions)({
     padding: '0 16px 8px 16px',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
 })
 
 export const Overlay = styled('div')({
@@ -44,7 +44,7 @@ export const Overlay2 = styled('div')({
 export const Details = styled('div')({
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '20px',
+    margin: '5px 20px 0px 20px',
 })
 
 export const MyButton = styled('button')({
@@ -55,7 +55,7 @@ export const MyButton = styled('button')({
     border: "none",
     boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px',
     cursor: 'pointer',
-    transition:'all 0.4s ease-in-out',
+    transition: 'all 0.4s ease-in-out',
     '&: hover': {
         // boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
         backgroundColor: "#9C27B0",
@@ -67,15 +67,35 @@ export const MyButtons = styled(Button)({
     // boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px',
     cursor: 'pointer',
     transition: 'all 0.4s ease-in-out',
+    marginBottom: '2px',
     '&: hover': {
         boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
-        backgroundColor: "#9C27B0",
-        color: 'white',
+
     },
 })
 
-export const MyButton2 = styled(Button)({
-    position: 'relative',
-    left: '187px',
-    bottom:'25px'
+// export const MyButton2 = styled(Button)({
+//     position: 'relative',
+//     left: '187px',
+//     bottom:'25px'
+// })
+
+// export const MyButtonBase = styled(ButtonBase)({
+//     display: 'block',
+//     textAlign: 'initial',
+// })
+
+export const MyTech = styled('p')({
+    backgroundColor: "#7B1FA2",
+    color: "white",
+    padding: "2px 8px",
+    width: "fit-content",
+    borderRadius: "15px",
+    margin: "5px 2px",
+    boxShadow: "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+    '&:hover': {
+        backgroundColor: "purple",
+        cursor: "pointer",
+    }
 })
+

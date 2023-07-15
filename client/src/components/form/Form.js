@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Typography, TextField } from '@mui/material'
+import { Typography, TextField, Container } from '@mui/material'
 import FileBase from 'react-file-base64';
 import { MyPaper, MyForm, MyButton, FileInput } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
 function Form({ currentId, setCurrentId }) {
 
-  const [postData, setPostData] = useState({ title: "", message: "", hostingAt: "", selectedFile: "" })
+  const [postData, setPostData] = useState({ title: "", message: "", hostingAt: "", selectedFile: "",techs:""})
   // console.log(postData)
   const dispatch = useDispatch();
 
@@ -26,16 +26,16 @@ function Form({ currentId, setCurrentId }) {
     }
 
   }
-  
+
   useEffect(() => {
     if (post) {
-      setPostData(post); 
+      setPostData(post);
     }
   }, [post]);
 
   const clear = () => {
     setCurrentId(0);
-    setPostData({ title: "", message: "", hostingAt: "", selectedFile: "" });
+    setPostData({ title: "", message: "", hostingAt: "", selectedFile: "" ,techs:""});
   }
 
   if (!user?.result?.name) {
@@ -53,8 +53,9 @@ function Form({ currentId, setCurrentId }) {
     <MyPaper>
       <MyForm autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Typography variant="h6">{currentId ? `Editing ${post.title}` : 'Uploading a Project'}</Typography>
-        <TextField name="title" variant="outlined" label="Title" fullWidth value={undefined || postData.title}  onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
+        <TextField name="title" variant="outlined" label="Title" fullWidth value={undefined || postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
         <TextField name="message" variant="outlined" label="Message" value={undefined || postData.message} fullWidth multiline rows={4} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
+        <TextField name="techs" variant="outlined" label="techs (coma separated)" fullWidth value={postData.techs} onChange={(e) => setPostData({ ...postData, techs: e.target.value.split(',') })} />
         <TextField name="hostingAt" variant="outlined" label="hostingAt" value={undefined || postData.hostingAt} fullWidth onChange={(e) => setPostData({ ...postData, hostingAt: e.target.value })} />
         <FileInput ><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></FileInput>
         <MyButton
@@ -76,6 +77,7 @@ function Form({ currentId, setCurrentId }) {
           Clear
         </MyButton>
       </MyForm>
+
     </MyPaper>
   );
 }

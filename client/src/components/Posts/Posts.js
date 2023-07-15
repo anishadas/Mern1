@@ -7,9 +7,9 @@ function Posts({ setCurrentId }) {
     const posts = useSelector((state)=>state.posts);
     return (
       !posts.length ? <CircularProgress /> : (
-            <MyGrid container alignItems="space-evenly" spacing={3}>
+            <MyGrid container  spacing={3}>
               {posts.map((post) => (
-                  <Grid key={post._id} item xs={12} sm={4} md={4} >
+                  <Grid key={post._id} item xs={12} sm={12} md={6} lg={4} >
                       <Post post={post} setCurrentId={setCurrentId} />
                   </Grid>
               ))}

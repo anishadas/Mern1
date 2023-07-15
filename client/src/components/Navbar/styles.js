@@ -1,50 +1,40 @@
-import { AppBar,Button,styled,Toolbar,Typography } from "@mui/material"
-// const theme = createTheme();
+import { Button,styled,Typography } from "@mui/material"
+import { Link } from "react-router-dom"
 
-export const MyAppBar = styled(AppBar)({
-    borderRadius: 15,
-    margin: '30px 0',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '2px 50px',
-})
+
 
 export const Heading = styled(Typography)({
-    color: 'rgba(0,183,255, 1)',
+    // color: theme.palette.primary.main,
+    textDecoration: 'none',
+    fontSize: '2em',
+    fontWeight: 300,
+    // border:"2px solid green",
 })
 
 export const Image = styled('img')({
-    marginLeft: '15px',
+    marginLeft: '10px',
+    marginTop: '5px',
 })
 
-export const LogoContainer = styled('div')({
+export const LogoContainer = styled(Link)({
     display: 'flex',
     alignItems: 'center',
 })
 
-export const MyToolBar = styled(Toolbar)({
-    display: 'flex',
-    justifyContent: 'flex-end',
-    width: '300px',
-})
 
-export const Profile = styled('div')({
-    display: 'flex',
-    justifyContent: 'space-between',
-    width: '300px',
-})
 
 export const UserName = styled(Typography)({
     display: 'flex',
     alignItems: 'center',
-    fontFamily:'Bebas Neue',
-    color: '#5DB8FE',
-    fontSize:'28px'
+    textAlign: 'center',
+    padding:"0 15px",
+    fontFamily: 'Bebas Neue',
+    // color: '#5DB8FE',
+    fontSize: '1.5rem',
 })
 
 
 export const MyButton = styled(Button)({
-    color:"white"
+    color: "white",
+    height:'fit-content'
 })

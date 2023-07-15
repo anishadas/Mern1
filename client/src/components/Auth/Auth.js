@@ -27,6 +27,7 @@ function Auth() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         if (isSignup) {
             dispatch(signup(formData, navigate));
         } else {

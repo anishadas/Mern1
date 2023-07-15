@@ -5,6 +5,7 @@ server:
 4. npm i google-auth-library jsonwebtoken
 5. What Is Body-parser?
 6. npm install bcryptjs
+7. 
 
 - Express body-parser is an npm module used to process data sent in an HTTP request body. It provides four express middleware for parsing JSON, Text, URL-encoded, and raw data sets over an HTTP request body. Before the target controller receives an incoming request, these middleware routines handle it.
 - Body parser is replace with express.json() in recent versions of express
@@ -32,6 +33,9 @@ server:
 3.  npm install jwt-decode
 4.  npm i @react-oauth/google
 5.  npm i react-router react-router-dom
+6.  npm install @mui/lab @mui/material
+7.  npm install mui-chips-input
+
 
 ## Redux-Thunk
    -  it is a middleware that looks at every action that passes through the system, and if it’s a function, it calls that function. That’s all it does.
@@ -55,10 +59,13 @@ server:
 forms --> adding data to state : postData -->handleSubmit(): dispatch(createPost(postData))--> createPost() in action : api.createPost(post) --> call api: axios.post(url):url=localhost:5000/posts -->router route to controllers:posts --> create new schema(mongodb): save the data -->send json response to client --> dispatch(data) --> reducer : return updated state --> store -->all compoents recieve updates
 
 ## moment
-  - 
 
 
-https://www.svgbackgrounds.com/#liquid-cheese
+## URLSearchParams
+![text](client/src/images/UrlSearchParams.webp)
+
+
+<!-- https://www.svgbackgrounds.com/#liquid-cheese -->
 
 
 client id:

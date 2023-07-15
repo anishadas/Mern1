@@ -4,7 +4,8 @@ const theme = createTheme();
 
 export const MyPaper = styled(Paper)({
     padding: theme.spacing(2),
-    // width:"100%"
+    // width: "90%",
+    // marginLeft:"20px"
 })
 
 export const MyForm = styled('form')({

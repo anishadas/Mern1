@@ -10,6 +10,28 @@ export const getPosts=async(req,res)=>{
     }
 }
 
+// Query -> /posts?page=1   --> page=1
+// params -> /posts/:id  --> ex: /posts/123 --> id=123
+
+export const getPostsBySearch = async (req, res) => {
+    console.log("req",req.query)
+    const { searchQuery, techs } = req.query;
+    console.log("search",searchQuery)
+    try {
+        const title = new RegExp(searchQuery.trim(), "i"); // i-->ignores case
+        // const exp=new RegExp("abc+d/E","i"); --> / abc + d\/E/i
+        // easy for mongoose to search
+        console.log(title,techs.split(','))
+        const posts = await PostMessage.find({ $or: [{ title }, { techs: { $in: techs.split(',') } }] } )
+        // $or --> either find title or techs
+        // $in: is the techs in the array of techs equal to techs in database
+        console.log("posts",posts)
+        res.json({searchedData:posts})
+    } catch (error) {
+        res.status(404).json({ message: error.message })
+    }
+}
+
 export const createPost=async(req,res)=>{
     const post=req.body;
     const newPost=new PostMessage({...post,creator:req.userId,createdAt:new Date().toISOString()})

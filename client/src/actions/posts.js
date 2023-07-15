@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/posts';
+import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, SEARCH } from '../constants/posts';
 
 import * as api from '../api/index.js';
 
@@ -11,6 +11,15 @@ export const getPosts = () => async (dispatch) => {
     }
 };
 
+export const getPostBySearch = (searchQuery) => async (dispatch) => {
+    // console.log(searchQuery)
+    try {
+        const { data:{searchedData} } = await api.fetchPostsBySearch(searchQuery);
+        dispatch({type:SEARCH,payload:searchedData})
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 export const createPost = (post) => async (dispatch) => {
     try {
         const { data } = await api.createPost(post);

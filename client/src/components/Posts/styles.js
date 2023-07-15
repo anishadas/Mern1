@@ -1,8 +1,8 @@
 import { Grid, styled } from "@mui/material";
 
 export const MyGrid = styled(Grid)({
-    display: 'flex',
-    alignItems: 'center',
+    // display: 'flex',
+    // flexWrap:"wrap"
 })
 
 // export default makeStyles((theme) => ({

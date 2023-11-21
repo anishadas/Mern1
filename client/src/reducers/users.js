@@ -1,15 +1,13 @@
-import {AUTH,LOGOUT} from '../constants/posts';
+import { AUTH, LOGOUT, GET_USER } from '../constants/posts';
 
-const authReducer = (state = { authData: null }, action) => {
+const authReducer = (state = { user: null,message:"" }, action) => {
     switch (action.type) {
         case AUTH:
-            localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
-
-            return { ...state, authData: action.data};
+            return { ...state, user: action.payload.user, message: action.payload.message };
         case LOGOUT:
-            localStorage.clear();
-
-            return { ...state, authData: null};
+            return { ...state, user: null,message:action.payload };
+        case GET_USER:
+            return {...state,user:action.payload.user,message:action.payload.message}
         default:
             return state;
     }

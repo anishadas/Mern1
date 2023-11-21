@@ -2,7 +2,7 @@ import { Paper,styled ,createTheme, Avatar,Button} from "@mui/material"
 const theme = createTheme();
 
 export const MyPaper = styled(Paper)({
-    marginTop: theme.spacing(8),
+    marginTop: "160px",
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

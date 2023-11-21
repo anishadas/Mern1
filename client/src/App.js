@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { deepPurple } from '@mui/material/colors';
 import Auth from "./components/Auth/Auth";
 import Details from "./components/Comments/Details";
+import { connect } from 'react-redux';
 const theme = createTheme({
   palette: {
     primary: {
@@ -15,8 +16,8 @@ const theme = createTheme({
     }
   }
 });
-function App() {
-  const user = JSON.parse(localStorage.getItem('profile'));
+function App({ user }) {
+  
   return (
     <Router>
       <Container maxWidth="xl">
@@ -24,15 +25,25 @@ function App() {
           <Navbar />
         </ThemeProvider>
         <Routes>
-          <Route path="/"  element={<Navigate replace to="/posts" />} />
+          <Route path="/" element={<Navigate replace to="/posts" />} />
           <Route path="/posts" element={<Home />} />
           <Route path="/posts/search" element={<Home />} />
-          <Route path="/posts/:id" exact element={<Details/>} />
-          <Route path="/auth" element={!user?<Auth />:<Navigate replace to='/posts'/>} />
+          <Route path="/posts/:id" exact element={<Details />} />
+          <Route path="/auth" element={!user ? <Auth /> : <Navigate replace to='/posts' />} />
         </Routes>
       </Container >
     </Router>
   )
 }
 
-export default App;
+const mapStateToProps = state => ({
+  user: state.userData.user,
+  message: state.userData.message// Replace 'yourReducer' with the actual name of your reducer
+});
+
+const mapDispatchToProps = dispatch => ({
+  // fetchData: () => dispatch(fetchDataAction()), // Replace with your actual action creator
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+

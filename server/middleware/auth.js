@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken'
+const jwt = require('jsonwebtoken');
 // ex: user wants to like a post
 // click th elike button ==> auth middleware will run and wait for next() ==> like controller
 
@@ -24,4 +24,4 @@ const auth=async (req,res,next)=>{
     }
 }
 
-export default auth;
+module.exports= auth;

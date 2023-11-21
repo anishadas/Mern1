@@ -1,3 +1,8 @@
+A place to add all my projecs
+lets make it interactive, so added a authrntication system & also one can like the projects, delete & add projects
+search the projects as well
+
+
 server:
 1. npm init -y : install package.json
 2. npm install body-parser cors express mongoose nodemon

@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Typography, TextField, Container } from '@mui/material'
 import FileBase from 'react-file-base64';
 import { MyPaper, MyForm, MyButton, FileInput } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
-function Form({ currentId, setCurrentId }) {
+function Form({ currentId, setCurrentId, user }) {
 
-  const [postData, setPostData] = useState({ title: "", message: "", hostingAt: "", selectedFile: "",techs:""})
+  const [postData, setPostData] = useState({ title: "", message: "", hostingAt: "", selectedFile: "", techs: "" })
   // console.log(postData)
   const dispatch = useDispatch();
-
   const post = useSelector(state => currentId ? state.posts.find(post => post._id === currentId) : null)
   // console.log("edit", post)
-  let user = JSON.parse(localStorage.getItem('profile'));
-  // console.log(user)
+  // let user = JSON.parse(localStorage.getItem('profile'));
+  // console.log("user", user)
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(currentId)
@@ -35,15 +34,15 @@ function Form({ currentId, setCurrentId }) {
 
   const clear = () => {
     setCurrentId(0);
-    setPostData({ title: "", message: "", hostingAt: "", selectedFile: "" ,techs:""});
+    setPostData({ title: "", message: "", hostingAt: "", selectedFile: "", techs: "" });
   }
 
-  if (!user?.result?.name) {
+  if (!user?.name) {
     // console.log(user)
     return (
       <MyPaper>
         <Typography variant="h6" align="center">
-          Please Sign In to create add your own projects. Also like & check outother's as well..
+          Please Sign In to create add your own projects. Also like & check out other's as well..
         </Typography>
       </MyPaper>
     );

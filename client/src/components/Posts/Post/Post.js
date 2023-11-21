@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Typography, CardContent, Link, ButtonBase } from '@mui/material';
-import { MyCard, MyCardActions, MyCardMedia, MyTypography, Overlay, Overlay2, Details, MyButton, MyButtons, MyTech} from './styles'
+import { MyCard, MyCardActions, MyCardMedia, MyTypography, Overlay, Overlay2, Details, MyButton, MyButtons, MyTech } from './styles'
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { deletePost, getPosts, likePost } from '../../../actions/posts';
@@ -9,14 +9,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import LaunchIcon from '@mui/icons-material/Launch';
 import EditIcon from '@mui/icons-material/Edit';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 
-function Post({ post, setCurrentId }) {
+function Post({ post, setCurrentId, index }) {
 
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const user = JSON.parse(localStorage.getItem('profile'));
     const Likes = () => {
@@ -30,10 +30,10 @@ function Post({ post, setCurrentId }) {
         }
         return <><ThumbUpOffAltIcon fontSize="small" />&nbsp;Like</>;
     }
-    const openPost = (e) => {
+    // const openPost = (e) => {
 
-        navigate(`/posts/${post._id}`)
-    }
+    //     navigate(`/posts/${post._id}`)
+    // }
 
     return (
         <MyCard raised elevation={6}>
@@ -70,7 +70,7 @@ function Post({ post, setCurrentId }) {
 
             <CardContent style={{ paddingTop: 0, paddingBottom: 0 }}>
                 <Typography variant="subtitle2" gutterBottom>Techs: </Typography>
-                <Typography variant="body1" color="primary" gutterBottom style={{ display:"flex",flexWrap:"wrap",justifyContent:"flex-start",alignItems:"center"}}>
+                <Typography variant="body1" color="primary" gutterBottom style={{ display: "flex", flexWrap: "wrap", justifyContent: "flex-start", alignItems: "center" }}>
                     {post.techs.map(tech => <MyTech>{tech}</MyTech>)}
                 </Typography>
             </CardContent>
